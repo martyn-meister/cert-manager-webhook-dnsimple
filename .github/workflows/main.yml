@@ -1,4 +1,4 @@
-name: push-to-quay
+name: buildnpush
 on:
   workflow_dispatch:
   push:
@@ -16,4 +16,4 @@ jobs:
       - name: Get dependencies
         run: go mod download
       - name: Build and push
-        run: KO_DOCKER_REPO=ghcr.io/martyn-meister/cert-manager-webhook-dnsimple ko
+        run: KO_DOCKER_REPO=ghcr.io/martyn-meister/cert-manager-webhook-dnsimple ko build
