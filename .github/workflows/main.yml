@@ -16,4 +16,4 @@ jobs:
       - name: Get dependencies
         run: go mod download
       - name: Build and push
-        run: KO_DOCKER_REPO=ghcr.io/martyn-meister/cert-manager-webhook-dnsimple ko build
+        run: KO_DOCKER_REPO=ghcr.io/martyn-meister/cert-manager-webhook-dnsimple ko build --platform=linux/amd64,linux/arm64
