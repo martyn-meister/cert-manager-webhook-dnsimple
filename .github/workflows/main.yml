@@ -1,0 +1,24 @@
+name: push-to-quay
+on:
+  workflow_run:
+    workflows: ["test"]
+    branches: [main]
+    types: 
+      - completed
+
+jobs:
+  buildnpush:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    strategy:
+      fail-fast: false
+
+    name: unit
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: imjasonh/setup-ko@v0.6
+      - name: Get dependencies
+        run: go mod download
+      - name: Build and push
+        run: KO_DOCKER_REPO=ghcr.io/martyn-meister/cert-manager-webhook-dnsimple ko
