@@ -2,6 +2,8 @@
 
 A [cert-manager][2] ACME DNS01 solver webhook for [DNSimple][1].
 
+(fork purpose: use ko so we can have arm64 support)
+
 ## Pre-requisites
 
 - [cert-manager][2] >= 0.13 (The Helm chart uses the new API versions)
